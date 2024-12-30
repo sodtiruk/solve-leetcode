@@ -14,30 +14,23 @@ class Solution:
 
         while list1 != None or list2 != None:
 
-            if list1 == None and list2 != None:
-                list3.next = ListNode(list2.val)
-                list3 = list3.next
-            elif list2 == None and list1 != None:
+            if list1 != None and list2 == None:
                 list3.next = ListNode(list1.val)
-                list3 = list3.next
-            else:
-                if list1.val >= list2.val:
+                list1 = list1.next  
+
+            elif list1 == None and list2 != None:
+                list3.next = ListNode(list2.val)
+                list2 = list2.next  
+
+            elif list1 != None and list2 != None:
+                if list1.val <= list2.val:
+                    list3.next = ListNode(list1.val)    
+                    list1 = list1.next
+                else:
                     list3.next = ListNode(list2.val)
-                    list3 = list3.next                
+                    list2 = list2.next
 
-                    list3.next = ListNode(list1.val)
-                    list3 = list3.next
-
-                elif list1.val < list2.val:
-                    list3.next = ListNode(list1.val)
-                    list3 = list3.next                
-
-                    list3.next = ListNode(list2.val)
-                    list3 = list3.next
-            if list1 != None:
-                list1 = list1.next
-            if list2 != None:
-                list2 = list2.next
+            list3 = list3.next
         return head.next
 
 
